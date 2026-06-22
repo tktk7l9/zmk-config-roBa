@@ -22,20 +22,27 @@
 ## Layer 0 — BASE
 
 ```
- Q    W    E    R    T    │    Y    U    I    O    P
- A    S    D    F    G  •S│    H    J    K    L   Ent
- Z    X    C    V    B    │    N    M   M1   M2  ⇧/-
-        GUI   ,   .  Tab* Spc* 英数* │ かな* BS          Esc*
+ Q    W    E    R    T               Y    U    I    O    P
+ A    S    D    F    G [•S][M3]      H    J    K    L   Ent
+ Z    X    C    V    B [DEL][CW]     N    M   M1   M2  ⇧/-
+        GUI   ,   .  Tab* Spc* 英数*   かな* BS          Esc*
 ```
+
+中央 `[ ]` は左右の内側キー（親指/人差し指で届く中央列）。
 
 ホールドタップ（`tap / hold`）:
 - `Tab*` = Tab / **SYMBOL(1)**
 - `Spc*` = Space / **NUM(2)**
-- `英数*` = 英数(LANG2) / **SCROLL(5)** ← 今回変更
+- `英数*` = 英数(LANG2) / **SCROLL(5)**
 - `かな*` = かな(LANG1) / **LCtrl**
 - `Esc*` = Esc / **FUNC(3)**
 - `⇧/-` = `-` / **LShift**
-- `•S` = 内側キー＝押している間 SCROLL(5)（`&mo 5`、押した瞬間からスクロール）
+
+中央・内側キー:
+- `[•S]` = 左内側＝押している間 SCROLL(5)（`&mo 5`、押した瞬間からスクロール）
+- `[M3]` = 中クリック（`&mkp MB3`）
+- `[DEL]` = 前方削除（Delete）
+- `[CW]` = Caps Word（次の単語だけ大文字、`&caps_word`）
 - `M1` `M2` = マウス左/右クリック
 
 ---
@@ -54,12 +61,13 @@
 ## Layer 2 — NUM（Space ホールド）
 
 ```
- →0   7    8    9    ─    │   Ent  Home  ↑   End  Alt
- 0    4    5    6    ─    │   PgUp  ←    ↓    →   PgDn
- ─    1    2    3   Sft   │   ⌥←   ⌥→   M1   M2   M3
-        GUI   ─   ─   ─   ─  │ Ctl  Del          FUNC*
+ →0   7    8    9    /            Ent  Home  ↑   End  Alt
+ 0    4    5    6    *  [-]       PgUp  ←    ↓    →   PgDn
+ .    1    2    3   Sft [+]       ⌥←   ⌥→   M1   M2   M3
+        GUI   ─   ─   ─   ─      Ctl  Del          FUNC*
 ```
 
+- 左ブロックは**テンキー**。演算子 `/ * - + .` を数字の隣に追加（`[-]` `[+]` は内側キー）。
 - `→0` = BASE(0) へ戻る（`&to 0`）
 - `⌥←` `⌥→` = Alt+←/→（単語移動）
 - `FUNC*` = この位置のホールドで FUNC(3)（`&mo 3`）
@@ -69,12 +77,13 @@
 ## Layer 3 — FUNC（Esc ホールド）
 
 ```
-OUTtg  F7   F8   F9  F10   │   ─    ─    ─    ─   BT0
-SysRst F4   F5   F6  F11   │   ─    ─   Caps  ─   BT1
- ─     F1   F2   F3  F12   │   ⌥←   ⌥→   ─   BT2  BTclr
-        ─    ─    ─    ─    ─  │ Ctl  ─          Boot
+OUTtg  F7   F8   F9  F10        Prev Play Next Mute  BT0
+SysRst F4   F5   F6  F11        Vol- Vol+ Caps Bri+  BT1
+ ─     F1   F2   F3  F12        ⌥←   ⌥→   Bri- BT2   BTclr
+        ─    ─    ─    ─    ─   Ctl  ─          Boot
 ```
 
+- 右側に**メディア操作**（Prev/Play・Pause/Next/Mute）・**音量**（Vol-/Vol+）・**画面輝度**（Bri-/Bri+）を追加。
 - `OUTtg` = 出力切替 USB/BT（`&out OUT_TOG`）
 - `SysRst` = ソフトリセット / `Boot` = ブートローダー
 - `BT0/1/2` = Bluetooth プロファイル選択 / `BTclr` = ペアリング全消去
