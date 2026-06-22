@@ -17,7 +17,7 @@ layers:
   - F
   - G
   - SCROLL
-  - {t: ▽, type: trans}
+  - '&mkp MB3'
   - H
   - J
   - K
@@ -28,8 +28,8 @@ layers:
   - C
   - V
   - B
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - DEL
+  - '&caps_word'
   - N
   - M
   - '&mkp MB1'
@@ -93,7 +93,7 @@ layers:
   - KP 7
   - KP 8
   - KP 9
-  - {t: ▽, type: trans}
+  - KP DIVIDE
   - ENTER
   - HOME
   - UP ARROW
@@ -103,20 +103,20 @@ layers:
   - KP 4
   - KP 5
   - KP 6
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - KP MULTIPLY
+  - KP MINUS
   - {t: ▽, type: trans}
   - PG UP
   - LEFT ARROW
   - DOWN ARROW
   - RIGHT ARROW
   - PG DN
-  - {t: ▽, type: trans}
+  - KP DOT
   - KP 1
   - KP 2
   - KP 3
   - LSHFT
-  - {t: ▽, type: trans}
+  - KP PLUS
   - {t: ▽, type: trans}
   - Alt+LEFT
   - Alt+RIGHT
@@ -138,10 +138,10 @@ layers:
   - F8
   - F9
   - F10
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - PREV
+  - PP
+  - NEXT
+  - MUTE
   - {t: BT, h: '0'}
   - '&sys_reset'
   - F4
@@ -150,10 +150,10 @@ layers:
   - F11
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - VOL DN
+  - VOL UP
   - CAPS
-  - {t: ▽, type: trans}
+  - BRI UP
   - {t: BT, h: '1'}
   - {t: ▽, type: trans}
   - F1
@@ -164,7 +164,7 @@ layers:
   - {t: ▽, type: trans}
   - Alt+LEFT
   - Alt+RIGHT
-  - {t: ▽, type: trans}
+  - BRI DN
   - {t: BT, h: '2'}
   - BT CLR
   - {t: ▽, type: trans}
