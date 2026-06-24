@@ -142,7 +142,7 @@ layers:
   - PP
   - NEXT
   - MUTE
-  - {t: BT, h: '0'}
+  - {h: BT CLR}
   - '&sys_reset'
   - F4
   - F5
@@ -152,7 +152,7 @@ layers:
   - {t: ▽, type: trans}
   - VOL DN
   - VOL UP
-  - CAPS
+  - Gui+Sft+4
   - BRI UP
   - {t: BT, h: '1'}
   - {t: ▽, type: trans}
@@ -165,8 +165,8 @@ layers:
   - Alt+LEFT
   - Alt+RIGHT
   - BRI DN
-  - {t: BT, h: '2'}
-  - BT CLR
+  - Ctl+Gui+Sft+4
+  - {t: BT, h: '0'}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
