@@ -77,16 +77,18 @@
 ## Layer 3 — FUNC（Esc ホールド）
 
 ```
-OUTtg  F7   F8   F9  F10        Prev Play Next Mute  BT0
-SysRst F4   F5   F6  F11        Vol- Vol+ Caps Bri+  BT1
- ─     F1   F2   F3  F12        ⌥←   ⌥→   Bri- BT2   BTclr
+OUTtg  F7   F8   F9  F10        Prev Play Next Mute  BTclr
+SysRst F4   F5   F6  F11        Vol- Vol+ ⌘⇧4  Bri+  BT1
+ ─     F1   F2   F3  F12        ⌥←   ⌥→   Bri- ⌃⌘⇧4 BT0
         ─    ─    ─    ─    ─   Ctl  ─          Boot
 ```
 
 - 右側に**メディア操作**（Prev/Play・Pause/Next/Mute）・**音量**（Vol-/Vol+）・**画面輝度**（Bri-/Bri+）を追加。
 - `OUTtg` = 出力切替 USB/BT（`&out OUT_TOG`）
 - `SysRst` = ソフトリセット / `Boot` = ブートローダー
-- `BT0/1/2` = Bluetooth プロファイル選択 / `BTclr` = ペアリング全消去
+- `⌘⇧4` = 範囲スクショ→ファイル（`&kp LG(LS(N4))`・旧Caps位置）
+- `⌃⌘⇧4` = 範囲スクショ→クリップボード（`&kp LC(LG(LS(N4)))`・旧BT2位置）
+- `BT0/1` = Bluetooth プロファイル選択（BT2は廃止）/ `BTclr` = ペアリング消去（**0.5秒長押しで発動**・タップは無反応＝誤爆防止）
 
 ---
 
