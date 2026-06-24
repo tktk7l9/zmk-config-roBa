@@ -142,7 +142,7 @@ layers:
   - PP
   - NEXT
   - MUTE
-  - {h: BT CLR}
+  - {h: '&bt_clr_macro'}
   - '&sys_reset'
   - F4
   - F5
