@@ -1,0 +1,9 @@
+# keymap-drawer 設定（draw.yml が config_path として参照）
+# 自前の hold-tap/マクロは内部名で描画されるため、ここで表示ラベルを上書きする。
+parse_config:
+  raw_binding_map:
+    # BTclr 長押しキー: 実体は &bt_clr_hold 0 0(hold=マクロ bt_clr_macro=&bt BT_CLR)。
+    # そのままだと "&bt_clr_macro" と描画されるので "BT CLR"(長押し)に整形。
+    "&bt_clr_hold 0 0":
+      tap: ""
+      hold: "BT CLR"
