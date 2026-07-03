@@ -80,7 +80,7 @@ Z     X     C     V     B     ⌦    │ CW    N     M     M1    M2    -*
 OUT   F7    F8    F9    F10  │ ⏮     ⏯     ⏭     Mute  BTclr*
 RST   F4    F5    F6    F11   ─    │ ─     Vol−  Vol+  ⇧⌘4   ☀+    BT1
 ─     F1    F2    F3    F12   ─    │ ─     ⌥←    ⌥→    ☀−    ⌃⇧⌘4  BT0
-F21   ─     ─     ─     ─     ─    │ ⌃     ─     BOOT
+─     ─     ─     ─     ─     ─    │ ⌃     ─     BOOT
 ```
 
 - 右側に**メディア操作**（Prev/Play・Pause/Next/Mute）・**音量**（Vol-/Vol+）・**画面輝度**（Bri-/Bri+）を追加。
