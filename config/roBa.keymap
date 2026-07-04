@@ -74,10 +74,36 @@
     };
 
     macros {
+        // BT_CLR 前に K_FIND(0x7E) をタップ: 接続中ホストの roba-hud へ
+        // 「このプロファイルのボンドをクリアした」を通知(リンク切断前に
+        // レポートを流しきるため 300ms 待ってからクリア)。
         bt_clr_macro: bt_clr_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_CLR>;
+            wait-ms = <300>;
+            tap-ms = <10>;
+            bindings = <&kp K_FIND>, <&bt BT_CLR>;
+        };
+
+        // BT プロファイルマーカー: 切替後に K_AGAIN+N (0x79+N) をタップし、
+        // 切替先ホストへ「アクティブプロファイル=N」を通知する。K_AGAIN〜
+        // K_PASTE は macOS に仮想キーコードが無く OS からは不可視(F21-F24 と
+        // 同じ実証パターン)。roba-hud だけが生 HID で受信しデバイス管理
+        // シートの自動検知に使う。
+        // 予約: 0x79-0x7D = BT0-4 切替通知 / 0x7E(K_FIND) = BT_CLR 通知。
+        // 1200ms 待ちは切替先との接続(再)確立待ち(未接続ならレポート破棄=無害)。
+        // 注意: GUI編集でこのキーを素の &bt に戻すとマーカー通知が消える。
+        bt_sel_m0: bt_sel_m0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <10>;
+            bindings = <&bt BT_SEL 0>, <&macro_wait_time 1200>, <&kp K_AGAIN>;
+        };
+        bt_sel_m1: bt_sel_m1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <10>;
+            bindings = <&bt BT_SEL 1>, <&macro_wait_time 1200>, <&kp K_UNDO>;
         };
 
         // レイヤーマーカー: レイヤーを有効化しつつ F21-F24 をホールド区間だけ押す。
@@ -161,8 +187,8 @@
             display-name = "FUNC";
             bindings = <
 &out OUT_TOG  &kp F7  &kp F8  &kp F9  &kp F10                                  &kp C_PREV     &kp C_PP       &kp C_NEXT    &kp C_MUTE     &bt_clr_hold 0 0
-&sys_reset    &kp F4  &kp F5  &kp F6  &kp F11  &trans         &trans     &kp C_VOL_DN   &kp C_VOL_UP   &kp LG(LS(N4))  &kp C_BRI_UP   &bt BT_SEL 1
-&trans        &kp F1  &kp F2  &kp F3  &kp F12  &trans         &trans     &kp LA(LEFT)   &kp LA(RIGHT)  &kp C_BRI_DN  &kp LC(LG(LS(N4)))   &bt BT_SEL 0
+&sys_reset    &kp F4  &kp F5  &kp F6  &kp F11  &trans         &trans     &kp C_VOL_DN   &kp C_VOL_UP   &kp LG(LS(N4))  &kp C_BRI_UP   &bt_sel_m1
+&trans        &kp F1  &kp F2  &kp F3  &kp F12  &trans         &trans     &kp LA(LEFT)   &kp LA(RIGHT)  &kp C_BRI_DN  &kp LC(LG(LS(N4)))   &bt_sel_m0
 &trans        &trans  &trans  &trans  &trans   &trans         &kp LCTRL  &trans                                                     &bootloader
             >;
         };

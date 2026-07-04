@@ -7,3 +7,9 @@ parse_config:
     "&bt_clr_hold 0 0":
       tap: ""
       hold: "BT CLR"
+    # BT プロファイル切替(マーカー付きマクロ)。実体は &bt BT_SEL n + 不可視
+    # マーカータップ(roba-hud のデバイス管理用)。表示は従来どおり BT n。
+    "&bt_sel_m0":
+      tap: "BT 0"
+    "&bt_sel_m1":
+      tap: "BT 1"
