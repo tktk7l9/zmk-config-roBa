@@ -25,9 +25,9 @@
 
 / {
     behaviors {
-        // BTclr 誤爆防止: 0.5秒ホールドで発動、タップ(誤爆)は無反応(&none)
-        // BT_CLR は2トークンに展開され &bt は2セル必要。hold-tap の hold 側は
-        // 1パラメータしか渡せないため、マクロ(bt_clr_macro)経由で &bt BT_CLR を呼ぶ。
+        // Prevent accidental BTclr: fires on a 0.5 s hold; a tap (accidental press) does nothing (&none)
+        // BT_CLR expands to 2 tokens and &bt needs 2 cells. The hold side of a hold-tap
+        // can only pass 1 parameter, so &bt BT_CLR is called via a macro (bt_clr_macro).
         bt_clr_hold: bt_clr_hold {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -36,9 +36,9 @@
             bindings = <&bt_clr_macro>, <&none>;
         };
 
-        // マーカー付きレイヤータップ (&lt 互換・第1パラメータはダミー 0)。
-        // 使い方: &ltm2 0 SPACE = タップで Space / ホールドで NUM + F22 マーカー。
-        // フレーバー/タイミングは従来の &lt 設定と同値。
+        // Layer-tap with marker (&lt-compatible; the 1st parameter is a dummy 0).
+        // Usage: &ltm2 0 SPACE = Space on tap / NUM + F22 marker on hold.
+        // Flavor/timing are the same as the previous &lt settings.
         ltm1: ltm1 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -74,9 +74,9 @@
     };
 
     macros {
-        // BT_CLR 前に K_FIND(0x7E) をタップ: 接続中ホストの roba-hud へ
-        // 「このプロファイルのボンドをクリアした」を通知(リンク切断前に
-        // レポートを流しきるため 300ms 待ってからクリア)。
+        // Tap K_FIND (0x7E) before BT_CLR: notifies roba-hud on the connected host that
+        // "this profile's bond was cleared" (waits 300 ms before clearing so the
+        // report is fully sent before the link drops).
         bt_clr_macro: bt_clr_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -85,14 +85,14 @@
             bindings = <&kp K_FIND>, <&bt BT_CLR>;
         };
 
-        // BT プロファイルマーカー: 切替後に K_AGAIN+N (0x79+N) をタップし、
-        // 切替先ホストへ「アクティブプロファイル=N」を通知する。K_AGAIN〜
-        // K_PASTE は macOS に仮想キーコードが無く OS からは不可視(F21-F24 と
-        // 同じ実証パターン)。roba-hud だけが生 HID で受信しデバイス管理
-        // シートの自動検知に使う。
-        // 予約: 0x79-0x7D = BT0-4 切替通知 / 0x7E(K_FIND) = BT_CLR 通知。
-        // 1200ms 待ちは切替先との接続(再)確立待ち(未接続ならレポート破棄=無害)。
-        // 注意: GUI編集でこのキーを素の &bt に戻すとマーカー通知が消える。
+        // BT profile marker: after switching, taps K_AGAIN+N (0x79+N) to notify
+        // the target host that "active profile = N". K_AGAIN through
+        // K_PASTE have no macOS virtual key codes and are invisible to the OS (same
+        // proven pattern as F21-F24). Only roba-hud receives them via raw HID and uses
+        // them for auto-detection in the device management sheet.
+        // Reserved: 0x79-0x7D = BT0-4 switch notices / 0x7E (K_FIND) = BT_CLR notice.
+        // The 1200 ms wait is for the connection to the target to be (re)established (if not connected, the report is dropped = harmless).
+        // Note: reverting this key to a plain &bt via GUI editing removes the marker notice.
         bt_sel_m0: bt_sel_m0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -106,10 +106,10 @@
             bindings = <&bt BT_SEL 1>, <&macro_wait_time 1200>, <&kp K_UNDO>;
         };
 
-        // レイヤーマーカー: レイヤーを有効化しつつ F21-F24 をホールド区間だけ押す。
-        // F21+ は macOS に仮想キーコードが無く OS からは不可視。roba-hud だけが
-        // 生 HID (IOHIDManager) で受信し、表示レイヤーの正確な切替に使う。
-        // 対応表: F21=SYMBOL(1) / F22=NUM(2) / F23=FUNC(3) / F24=SCROLL(5)
+        // Layer marker: activates the layer while holding F21-F24 for the duration of the hold.
+        // F21+ have no macOS virtual key codes and are invisible to the OS. Only roba-hud
+        // receives them via raw HID (IOHIDManager) and uses them to switch the displayed layer accurately.
+        // Mapping: F21=SYMBOL(1) / F22=NUM(2) / F23=FUNC(3) / F24=SCROLL(5)
         mkr_l1: mkr_l1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
