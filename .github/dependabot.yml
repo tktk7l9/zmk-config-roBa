@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Keeps the commit-pinned keymap-drawer workflow (draw.yml) current. The ZMK build workflow
+  # uses a release branch on purpose (see build.yml) and is not something Dependabot updates.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]

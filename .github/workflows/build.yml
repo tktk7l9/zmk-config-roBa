@@ -1,5 +1,14 @@
 on: [push, pull_request, workflow_dispatch]
 
+# Read-only token: the reusable ZMK workflow only checks out, builds and uploads artifacts.
+permissions:
+  contents: read
+
 jobs:
   build:
+    # Intentionally a branch ref, not a commit SHA. ZMK's reusable build workflow must track the
+    # same ZMK revision that config/west.yml pulls (revision: v0.3-branch); pinning only one side
+    # would let the workflow and the firmware source drift apart. ZMK documents this pairing for
+    # user configs, and the v0.3 branch only receives fixes for that release line.
+    # When upgrading ZMK, change this ref and west.yml's revision together.
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3-branch
