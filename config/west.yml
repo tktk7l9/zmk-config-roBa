@@ -9,8 +9,13 @@ manifest:
       remote: zmkfirmware
       revision: v0.3-branch
       import: app/west.yml
+    # Third-party trackball driver, pinned to a commit: it is compiled into the
+    # keyboard firmware, so a moving branch would let any push to that repo
+    # change what gets flashed. 5e04553 is the driver's main HEAD since
+    # 2025-02-26, i.e. the exact code every build so far has used.
+    # To update: check the upstream diff, then bump this SHA.
     - name: zmk-pmw3610-driver
       remote: kumamuk-git
-      revision: main
+      revision: 5e04553ab803d24405bd45621a41310ea3050e59
   self:
     path: config
